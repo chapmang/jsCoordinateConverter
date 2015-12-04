@@ -13,7 +13,7 @@ Math.rad2Deg = function(radians) {
 
 DatumConversion.toCartesian = function (coordinates, ellipsoidCode) {
 
-	var ellipoid = ellipoidConstants[0][ellipsoidCode];
+	var ellipoid = ellipoidConstants[ellipsoidCode];
 	
 	var lon = Math.deg2Rad(coordinates.getXAxis());
 	var lat = Math.deg2Rad(coordinates.getYAxis());
@@ -40,8 +40,7 @@ DatumConversion.toCartesian = function (coordinates, ellipsoidCode) {
 
 DatumConversion.fromCartesian = function (coordinates, ellipsoidCode) {
 
-	console.log(coordinates.getXAxis());
-	var ellipoid = ellipoidConstants[0][ellipsoidCode];
+	var ellipoid = ellipoidConstants[ellipsoidCode];
 	
 	var x = coordinates.getXAxis();
 	var y = coordinates.getYAxis();
@@ -68,4 +67,24 @@ DatumConversion.fromCartesian = function (coordinates, ellipsoidCode) {
 	lon = Math.rad2Deg(lon);
 	lat = Math.rad2Deg(lat);
 	return new lonLatValues(lon, lat, height);
-}
+};
+
+DatumConversion.helmertTransformation = function (x, y, z, t) {
+
+	var tx = t["translationVectors"]["x"];
+	var ty = t["translationVectors"]["y"];
+	var tz = t["translationVectors"]["z"];
+
+
+	var rx = Math.deg2Rad(t["rotationMatrix"]["x"] / 3600);
+	var ry = Math.deg2Rad(t["rotationMatrix"]["y"] / 3600);
+	var rz = Math.deg2Rad(t["rotationMatrix"]["z"] / 3600);
+
+	var s = t["scaleFactor"] / 1e6;
+
+	var xAxis = tx + x * (1 + s) - y * rz + z * ry;
+	var yAxis = ty + x * rz + y * (1 + s) - z * rx;
+	var zAxis = tz - x * ry + y * rx + z * (1 + s);
+
+	return [xAxis, yAxis, zAxis];
+};
