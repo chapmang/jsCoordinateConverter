@@ -23,7 +23,7 @@ TransversMercatorConversion.meridionalArc = function (b, F0, n, lat, lat0) {
 
 TransversMercatorConversion.eccentricitySquared = function(a,b) {
 
-	var e2 = ((a * a) - (b * b)) / ( a * a );
+	var e2 = (Math.pow(a, 2) - Math.pow(b, 2)) / Math.pow(a, 2);
 	return e2;
 }
 
