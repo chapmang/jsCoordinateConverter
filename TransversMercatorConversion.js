@@ -29,8 +29,8 @@ TransversMercatorConversion.eccentricitySquared = function(a,b) {
 
 TransversMercatorConversion.latLonToEN = function(coordinates, projectionCode, ellipsoidCode) {
 
-	var projection = projectionConstants[0][projectionCode];
-	var ellipoid = ellipoidConstants[0][ellipsoidCode];
+	var projection = projectionConstants[projectionCode];
+	var ellipoid = ellipoidConstants[ellipsoidCode];
 
 	var lon = Math.deg2Rad(coordinates.getXAxis());
 	var lat = Math.deg2Rad(coordinates.getYAxis());
@@ -76,8 +76,8 @@ TransversMercatorConversion.enToLonLat = function(coordinates, projectionCode, e
 	var E = coordinates.getXAxis();
 	var N = coordinates.getYAxis();
 
-	var projection = projectionConstants[0][projectionCode];
-	var ellipoid = ellipoidConstants[0][ellipsoidCode];
+	var projection = projectionConstants[projectionCode];
+	var ellipoid = ellipoidConstants[ellipsoidCode];
 
 	var a = ellipoid.a;
 	var b = ellipoid.b;
