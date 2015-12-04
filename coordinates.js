@@ -41,8 +41,8 @@ xyzCoordinate.prototype.getXAxis = function(){
 xyzCoordinate.prototype.getYAxis = function(){
 	return this.yAxis
 };
-xyzCoordinate.prototype.getzAxis = function(){
-	return this.ZAxis
+xyzCoordinate.prototype.getZAxis = function(){
+	return this.zAxis
 };
 
 var eastNorthValues = function(easting, northing, height) {
@@ -58,3 +58,10 @@ var lonLatValues = function(longitude, latitude, height) {
 }
 
 lonLatValues.prototype = Object.create(xyzCoordinate.prototype);
+
+var xYValues = function(x, y, z) {
+
+	this.setCoordinates(x, y, z);
+}
+
+xYValues.prototype = Object.create(xyzCoordinate.prototype);
