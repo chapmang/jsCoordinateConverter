@@ -26,6 +26,6 @@ OpenLayers.Projection.OSNG.gridRefToWgs84 = function () {
 	
 };
 
-OpenLayers.Projection.OSNG.wgs84ToGridRef = fucntion () {
+OpenLayers.Projection.OSNG.wgs84ToGridRef = function () {
 	
 };

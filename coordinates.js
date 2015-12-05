@@ -6,7 +6,7 @@ var xyzCoordinate = xyzCoordinate || function() {
 	this.zAxis = 0;
 
 	throw new Error("Cannot create and instance of an abstract class");
-}
+};
 
 xyzCoordinate.prototype.setCoordinates = function(x, y, z) {
 	
@@ -36,32 +36,32 @@ xyzCoordinate.prototype.setCoordinates = function(x, y, z) {
 };
 
 xyzCoordinate.prototype.getXAxis = function(){
-	return this.xAxis
+	return this.xAxis;
 };
 xyzCoordinate.prototype.getYAxis = function(){
-	return this.yAxis
+	return this.yAxis;
 };
 xyzCoordinate.prototype.getZAxis = function(){
-	return this.zAxis
+	return this.zAxis;
 };
 
 var eastNorthValues = function(easting, northing, height) {
 
 	this.setCoordinates(easting, northing, height);
-}
+};
 
 eastNorthValues.prototype = Object.create(xyzCoordinate.prototype);
 
 var lonLatValues = function(longitude, latitude, height) {
 
 	this.setCoordinates(longitude, latitude, height);
-}
+};
 
 lonLatValues.prototype = Object.create(xyzCoordinate.prototype);
 
 var xYValues = function(x, y, z) {
 
 	this.setCoordinates(x, y, z);
-}
+};
 
 xYValues.prototype = Object.create(xyzCoordinate.prototype);

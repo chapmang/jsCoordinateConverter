@@ -25,7 +25,7 @@ TransversMercatorConversion.eccentricitySquared = function(a,b) {
 
 	var e2 = (Math.pow(a, 2) - Math.pow(b, 2)) / Math.pow(a, 2);
 	return e2;
-}
+};
 
 TransversMercatorConversion.latLonToEN = function(coordinates, projectionCode, ellipsoidCode) {
 
@@ -41,7 +41,7 @@ TransversMercatorConversion.latLonToEN = function(coordinates, projectionCode, e
 	var N0 = projection.N0;
 	var E0 = projection.E0;
 	var a = ellipoid.a;
-	var b = ellipoid.b
+	var b = ellipoid.b;
 	var e2 = TransversMercatorConversion.eccentricitySquared(a,b);
 	var n = (a - b) / (a + b);
 
@@ -93,8 +93,8 @@ TransversMercatorConversion.enToLonLat = function(coordinates, projectionCode, e
 	var M = TransversMercatorConversion.meridionalArc(b, F0, n, lat1, lat0);
 
 	do {
-		var lat1 = (N - N0 - M) / (a * F0) + lat1;
-		var M = TransversMercatorConversion.meridionalArc(b, F0, n, lat1, lat0);
+		lat1 = (N - N0 - M) / (a * F0) + lat1;
+		M = TransversMercatorConversion.meridionalArc(b, F0, n, lat1, lat0);
 	} while (N - N0 - M >= 0.00001);
 
 	var cosLat1 = Math.cos(lat1);
@@ -122,7 +122,7 @@ function ENPoint(location) {
 
 	this.east = location.getXAxis();
 	this.north = location.getYAxis();
-};
+}
 
 function lonLatPoint(location) {
 
