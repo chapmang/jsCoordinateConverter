@@ -1,9 +1,9 @@
 // XYZ Coordinate Abstract Class
 var xyzCoordinate = xyzCoordinate || function() {
 
-	this.xAxis = 0;
-	this.yAxis = 0;
-	this.zAxis = 0;
+	var xAxis = 0;
+	var yAxis = 0;
+	var zAxis = 0;
 
 	throw new Error("Cannot create and instance of an abstract class");
 };
